@@ -1,0 +1,38 @@
+#!/bin/bash
+# ╔═══════════════════════════════════════════╗
+# ║  HERMES CLI — Chat direto com o Agente   ║
+# ║  Uso: hermes           → chat interativo  ║
+# ║       hermes "msg"     → resposta direta  ║
+# ╚═══════════════════════════════════════════╝
+
+HERMES_DIR="$HOME/Documents/Hermes/agent"
+PYTHON="$HERMES_DIR/venv/bin/python3"
+AGENT="$HERMES_DIR/organizer_agent.py"
+
+# Verifica dependências
+if [ ! -f "$PYTHON" ]; then
+    echo "❌ venv não encontrado em $HERMES_DIR/venv"
+    exit 1
+fi
+
+if [ ! -f "$AGENT" ]; then
+    echo "❌ organizer_agent.py não encontrado"
+    exit 1
+fi
+
+# Verifica se Ollama está rodando
+if ! curl -s http://localhost:11434/api/tags > /dev/null 2>&1; then
+    echo "⚠️  Ollama não está rodando. Iniciando..."
+    open -a Ollama 2>/dev/null || ollama serve &
+    sleep 3
+fi
+
+cd "$HERMES_DIR"
+
+if [ -z "$1" ]; then
+    # Sem argumento → modo chat interativo
+    exec "$PYTHON" "$AGENT" --chat
+else
+    # Com argumento → resposta direta (suprime logs internos)
+    "$PYTHON" "$AGENT" "$@" 2>/dev/null | grep -E "^\[Hermes\]:" | sed 's/\[Hermes\]: //'
+fi

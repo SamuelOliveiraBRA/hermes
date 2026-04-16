@@ -1,0 +1,29 @@
+{
+  "last_scan": "Starting Nmap 7.99 ( https://nmap.org ) at 2026-04-16 13:12 -0300\nNmap scan report for 192.168.3.1\nHost is up (0.00067s latency).\nNot shown: 5 filtered tcp ports (no-response)\nSome closed ports may be reported as filtered due to --defeat-rst-ratelimit\nPORT    STATE SERVICE\n80/tcp  open  http\n443/tcp open  https\n\nNmap scan report for 192.168.3.8\nHost is up (0.0064s latency).\nNot shown: 5 filtered tcp ports (no-response)\nSome closed ports may be reported as filtered due to --defeat-rst-ratelimit\nPORT    STATE SERVICE\n80/tcp  open  http\n443/tcp open  https\n\nNmap scan report for 192.168.3.71\nHost is up (0.036s latency).\nNot shown: 5 closed tcp ports (conn-refused)\nPORT    STATE SERVICE\n80/tcp  open  http\n554/tcp open  rtsp\n\nNmap done: 256 IP addresses (4 hosts up) scanned in 21.48 seconds",
+  "devices": [
+    {
+      "ip": "192.168.3.1",
+      "ports": [
+        "80",
+        "443"
+      ],
+      "type": "unknown"
+    },
+    {
+      "ip": "192.168.3.8",
+      "ports": [
+        "80",
+        "443"
+      ],
+      "type": "unknown"
+    },
+    {
+      "ip": "192.168.3.71",
+      "ports": [
+        "80",
+        "554"
+      ],
+      "type": "camera"
+    }
+  ]
+}

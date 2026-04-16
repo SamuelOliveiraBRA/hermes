@@ -1,0 +1,9 @@
+node_modules
+.next
+venv
+agent/venv
+__pycache__
+*.log
+.DS_Store
+huntes.lock
+hermes_bounty.json
