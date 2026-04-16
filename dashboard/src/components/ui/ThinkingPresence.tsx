@@ -6,13 +6,13 @@ import { Brain } from 'lucide-react';
 import { GlassPanel } from '@/components/ui/GlassPanel';
 
 interface ThinkingPresenceProps {
-  isThinking: boolean;
+  isVisible: boolean;
 }
 
-export const ThinkingPresence: React.FC<ThinkingPresenceProps> = ({ isThinking }) => {
+export const ThinkingPresence: React.FC<ThinkingPresenceProps> = ({ isVisible }) => {
   return (
     <AnimatePresence>
-      {isThinking && (
+      {isVisible && (
         <motion.div
           initial={{ opacity: 0, y: -20, scale: 0.9 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
