@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  hermes-mev:
+    build: .
+    container_name: hermes-mev-core
+    restart: always # O container nunca vai morrer organicamente, roda o Piloto 24/7
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
